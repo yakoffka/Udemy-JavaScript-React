@@ -24,10 +24,10 @@
 'use strict';
 
 // 1
-let numberOfFilms = prompt('Сколько фильмов Вы посмотрели за последний месяц?', '0');
+const numberOfFilms = Number(prompt('Сколько фильмов Вы посмотрели за последний месяц?', '0'));
 
 // 2
-let personalMovieDB = {
+const personalMovieDB = {
     count: numberOfFilms,
     movies: {},
     actors: {},
@@ -36,15 +36,16 @@ let personalMovieDB = {
 };
 
 // 3
-let movie = [];
-let rating = [];
+const names = [];
+const ratings = [];
 
-for(let i = 0; i < 2; i++) {
-    movie.push(prompt('Один из последних просмотренных фильмов?', ''));
-    rating.push(prompt('На сколько оцените его?', ''));
+for(let i = 0; i < personalMovieDB.count; i++) {
+    names.push(prompt('Один из последних просмотренных фильмов?', ''));
+    ratings.push(prompt('На сколько оцените его?', ''));
 }
 
-personalMovieDB.movies[movie.pop()] = rating.pop();
-personalMovieDB.movies[movie.pop()] = rating.pop();
+while (names.length) {
+    personalMovieDB.movies[names.shift()] = ratings.shift();
+}
 
 console.log(personalMovieDB);
