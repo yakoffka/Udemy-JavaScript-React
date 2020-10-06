@@ -16,30 +16,22 @@
 
 function extracted(question, num = false) {
     let answer = '';
-    while (answer.length === 0 || answer.length > 50 || (num && isNaN(Number(answer)))) {
+    while (answer == null || answer.length === 0 || answer.length > 50 || (num && isNaN(Number(answer)))) {
         answer = prompt(question, '');
     }
     return answer;
 }
 
-
-// 1
-const numberOfFilms = Number(extracted('Сколько фильмов Вы посмотрели за последний месяц?', true));
-
-
-// 2
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false,
-};
-
-
-// 3
-const names = [];
-const ratings = [];
+const numberOfFilms = Number(extracted('Сколько фильмов Вы посмотрели за последний месяц?', true)),
+    personalMovieDB = {
+        count: numberOfFilms,
+        movies: {},
+        actors: {},
+        genres: [],
+        privat: false,
+    },
+    names = [],
+    ratings = [];
 
 for (let i = 0; i < personalMovieDB.count; i++) {
     names.push(extracted('Один из последних просмотренных фильмов?'));
